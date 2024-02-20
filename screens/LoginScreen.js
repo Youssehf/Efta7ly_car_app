@@ -34,7 +34,7 @@ export default function LoginScreen() {
       Alert.alert("Missing Input", "Please make sure you Provided both Email and Password!");
     }
   };
-  console.log("auth data", auth);
+  // console.log("auth data", auth);
   return (
     <View style={tw`flex-1 bg-slate-800`}>
       <SafeAreaView style={tw`flex `}>

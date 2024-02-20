@@ -1,32 +1,50 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { signOut, getAuth } from "firebase/auth";
-import { auth } from "../config/firebase";
 import tw from "twrnc";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import SettingsScreen from "./SettingsScreen";
+import ProfileScreen from "./ProfileScreen";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import ConnectScreen from "./ConnectScreen";
 
 export default function HomeScreen() {
-  const aa = getAuth();
-  const user = aa.displayName;
-  if (user) {
-    console.log("user is", user);
-  }else {
-    console.log('no user', );
-  }
-  const handleLogout = async () => {
-    await signOut(auth);
-  };
+  const Tab = createBottomTabNavigator();
+
   return (
-    <SafeAreaView
-      style={tw`flex-1 flex-row justify-center items-center bg-slate-500`}
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: "#1d4ed8",
+        tabBarLabelPosition: "below-icon",
+      }}
     >
-      <Text style={tw`text-lg text-red-300`}>Home Page -Hii ya {} </Text>
-      <TouchableOpacity
-        onPress={handleLogout}
-        style={tw`p-1 bg-red-400 rounded-lg`}
-      >
-        <Text style={tw`text-white text-lg font-bold`}>Logout</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="bomb" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="face-man" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Connect"
+        component={ConnectScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="car" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 }
