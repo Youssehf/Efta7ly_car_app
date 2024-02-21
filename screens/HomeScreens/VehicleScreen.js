@@ -1,10 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-export default function ConnectScreen() {
+export default function VehicleScreen() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Connect!</Text>
+      <Text>my Car!</Text>
     </View>
   );
 }
