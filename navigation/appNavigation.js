@@ -7,6 +7,7 @@ import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import useAuth from "../hooks/useAuth";
 import HomeNav from "../screens/HomeNav";
+import EditProfile from "../screens/HomeScreens/EditProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,7 +21,11 @@ export default function AppNavigation() {
             name="Home"
             options={{ headerShown: false }}
             component={HomeNav}
-          />
+          /><Stack.Screen
+          name="Account"
+          options={{ headerShown: false }}
+          component={EditProfile}
+        />
         </Stack.Navigator>
       </NavigationContainer>
     );
