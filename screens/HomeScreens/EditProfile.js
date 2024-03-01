@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
-  StyleSheet,
   Alert,
   Image,
 } from "react-native";
@@ -91,7 +90,7 @@ export default function EditProfile() {
                 />
               </View>
             ) : (
-                //display the blank image
+              //display the blank image
               <View style={tw`w-16 h-16`}>
                 <Image
                   source={blankProfile}
@@ -154,7 +153,10 @@ export default function EditProfile() {
             />
             <TouchableOpacity
               style={tw`py-3 bg-sky-700 rounded-full shadow-md`}
-              onPress={sendToFirestore}
+              onPress={() => {
+                navigation.navigate("HomeNav");
+                sendToFirestore();
+              }}
             >
               <Text style={tw`text-xl font-bold text-center text-white`}>
                 Update My Data
@@ -166,50 +168,3 @@ export default function EditProfile() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 20,
-  },
-  phoneInput: {
-    // height: 50,
-    // width: "100%",
-    // borderWidth: 1,
-    // borderColor: "#154862",
-    // marginBottom: 20,
-    // paddingHorizontal: 10,
-    padding: 16 /* p-4 */,
-    backgroundColor: "#f3f4f6" /* bg-gray-100 */,
-    color: "#4b5563" /* text-gray-700 */,
-    borderRadius: 16 /* rounded-2xl */,
-    marginBottom: 12 /* mb-3 */,
-  },
-  countryButton: {
-    marginBottom: 20,
-  },
-  countryPickerButton: {
-    borderRadius: 5,
-    backgroundColor: "#fff",
-    marginBottom: 20,
-  },
-  countryPickerCloseButton: {
-    width: 20,
-    height: 20,
-  },
-  submitButton: {
-    width: "100%",
-  },
-  shadowProp: {
-    shadowColor: "#171717",
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-  },
-  elevation: {
-    elevation: 20,
-    shadowColor: "#52006A",
-  },
-});

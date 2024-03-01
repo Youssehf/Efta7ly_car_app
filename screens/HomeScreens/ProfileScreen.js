@@ -17,7 +17,7 @@ export default function ProfileScreen() {
   };
   return (
     <View style={tw`flex-1 flex-row justify-center items-center bg-slate-500`}>
-      <Text style={tw`text-lg text-red-300`}>Home Page -Hii ya {} </Text>
+      <Text style={tw`text-lg text-red-300`}>Settings! {} </Text>
       <TouchableOpacity
         onPress={handleLogout}
         style={tw`p-1 bg-red-400 rounded-lg`}

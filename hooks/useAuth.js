@@ -9,7 +9,7 @@ export default function useAuth() {
   useEffect(() => {
     //this will trigger every time the user logs in and out
     const unsub = onAuthStateChanged(auth, (user) => {
-      console.log("got user: ", user);
+      // console.log("got user: ", user);
       if (user) {
         setUser(user);
       } else {

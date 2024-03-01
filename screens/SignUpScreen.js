@@ -5,6 +5,7 @@ import {
   Image,
   TextInput,
   ScrollView,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -19,14 +20,28 @@ export default function SignUpScreen() {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [errorPresent, setErrorPresent] = useState("");
 
   const handleSubmit = async () => {
     if (email && password) {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
       } catch (err) {
-        console.log("got error: ", err.message);
+        setErrorPresent(err.message);
+        console.log("Error from state-->", err.message);
+        // console.log("got error: ", err.message);
+        // let pew = err.message;
       }
+    }
+  };
+  const handleSignUpInputs = () => {
+    if (email === "" || password === "") {
+      Alert.alert(
+        "Missing Input",
+        "Please make sure you Provided both Email and Password!"
+      );
+    } else if (errorPresent !== "") {
+      Alert.alert("ERROR", `${errorPresent}`);
     }
   };
   return (
@@ -58,7 +73,9 @@ export default function SignUpScreen() {
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl shadow-lg mb-3`}
               value={userName}
-              onChangeText={(value)=>{setUserName(value)}}
+              onChangeText={(value) => {
+                setUserName(value);
+              }}
               placeholder="Enter Name"
             />
             <Text style={tw`text-black font-bold ml-3`}>Email Address</Text>
@@ -78,7 +95,10 @@ export default function SignUpScreen() {
             />
             <TouchableOpacity
               style={tw`py-3 bg-sky-700 rounded-full shadow-md`}
-              onPress={handleSubmit}
+              onPress={() => {
+                handleSubmit();
+                handleSignUpInputs();
+              }}
             >
               <Text style={tw`text-xl font-bold text-center text-white`}>
                 Sign Up

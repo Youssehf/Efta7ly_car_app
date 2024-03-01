@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
 import tw from "twrnc";
 import { useNavigation } from "@react-navigation/native";
 
@@ -10,7 +11,7 @@ export default function HomeAccScreen() {
   return (
     <ScrollView style={tw`flex flex-col bg-blue-100 px-5`}>
       <View style={tw`flex items-center justify-center my-9`}>
-        <Text style={tw`text-2xl py-2`}>Good Morning, JUILE 🌅</Text>
+        <Text style={tw`text-2xl py-2`}>Good Morning, YOUSSEF 🌅</Text>
         <Text style={tw`text-2xl py-2`}>Member ID: 123456987</Text>
         <TouchableOpacity
           onPress={() => {
@@ -23,19 +24,26 @@ export default function HomeAccScreen() {
       <View style={tw``}>
         <View style={tw`flex flex-row items-center justify-between py-9`}>
           <Text style={tw`pl-8 text-2xl font-bold`}>MY VEHICLES</Text>
-          <TouchableOpacity style={tw`pr-8`}>
+          <TouchableOpacity
+            style={tw`pr-8`}
+            onPress={() => {
+              navigation.navigate("AddCar");
+            }}
+          >
             <MaterialCommunityIcons name="plus-circle" size={35} />
           </TouchableOpacity>
         </View>
-        <View
-          style={tw`flex flex-row items-center justify-start gap-9 bg-blue-200 rounded-xl`}
-        >
-          <Image source={myCar} style={tw`h-48 ml-7 flex-2`} />
-          <View style={tw`flex-2`}>
-            <Text style={tw`text-2xl py-2`}>MY BMW</Text>
-            <Text style={tw`text-2xl`}>BMW x6 2018</Text>
+        <TouchableOpacity>
+          <View
+            style={tw`flex flex-row items-center justify-start gap-9 bg-blue-200 rounded-xl`}
+          >
+            <Image source={myCar} style={tw`h-48 ml-7 flex-2`} />
+            <View style={tw`flex-2`}>
+              <Text style={tw`text-2xl py-2`}>MY BMW</Text>
+              <Text style={tw`text-2xl`}>BMW x6 2018</Text>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={tw``}>
         <View style={tw`flex flex-row items-center justify-between py-9`}>
@@ -45,30 +53,30 @@ export default function HomeAccScreen() {
           <View
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
-            <Text style={tw`text-2xl py-2`}>MY BMW</Text>
-            <Text style={tw`text-2xl`}>BMW x6 2018</Text>
+            <Text style={tw`text-2xl py-2`}>Settings</Text>
+            <MaterialIcons name="settings" size={128} color="black" />
           </View>
 
           <View
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
-            <Text style={tw`text-2xl py-2`}>MY BMW</Text>
-            <Text style={tw`text-2xl`}>BMW x6 2018</Text>
+            <Text style={tw`text-2xl py-2`}>Vehicle Status</Text>
+            <FontAwesome5 name="car" size={128} color="black" />
           </View>
         </View>
         <View style={tw`flex flex-row flex-wrap items-center gap-3 py-4 `}>
           <View
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
-            <Text style={tw`text-2xl py-2`}>MY BMW</Text>
-            <Text style={tw`text-2xl`}>BMW x6 2018</Text>
+            <Text style={tw`text-2xl py-2`}>Call Support</Text>
+            <MaterialIcons name="support-agent" size={128} color="black" />
           </View>
 
           <View
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
-            <Text style={tw`text-2xl py-2`}>MY BMW</Text>
-            <Text style={tw`text-2xl`}>BMW x6 2018</Text>
+            <Text style={tw`text-2xl py-2`}>Bluetooth</Text>
+            <FontAwesome5 name="bluetooth" size={128} color="black" />
           </View>
         </View>
       </View>

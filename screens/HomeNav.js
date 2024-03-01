@@ -26,7 +26,7 @@ export default function HomeNav() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
-          ),title: 'Account'
+          ),title: 'Home'
         }}
       />
       <Tab.Screen
@@ -53,7 +53,7 @@ export default function HomeNav() {
       />
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
+        component={ProfileScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="bomb" color={color} size={size} />

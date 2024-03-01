@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -8,6 +7,7 @@ import SignUpScreen from "../screens/SignUpScreen";
 import useAuth from "../hooks/useAuth";
 import HomeNav from "../screens/HomeNav";
 import EditProfile from "../screens/HomeScreens/EditProfile";
+import AddCar from "../screens/HomeScreens/AddCar";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,16 +16,22 @@ export default function AppNavigation() {
   if (user) {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="HomeNav">
           <Stack.Screen
-            name="Home"
+            name="HomeNav"
             options={{ headerShown: false }}
             component={HomeNav}
-          /><Stack.Screen
-          name="Account"
-          options={{ headerShown: false }}
-          component={EditProfile}
-        />
+          />
+          <Stack.Screen
+            name="Account"
+            options={{ headerShown: false }}
+            component={EditProfile}
+          />
+          <Stack.Screen
+            name="AddCar"
+            options={{ headerShown: false }}
+            component={AddCar}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );

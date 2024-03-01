@@ -19,22 +19,27 @@ export default function LoginScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorPresent, setErrorPresent] = useState("");
 
   const handleSubmit = async () => {
     if (email && password) {
       try {
         await signInWithEmailAndPassword(auth, email, password);
       } catch (err) {
-        console.log("got error: ", err.message);
+        setErrorPresent(err.message);
       }
     }
   };
   const handleLoginInputs = () => {
     if (email === "" || password === "") {
-      Alert.alert("Missing Input", "Please make sure you Provided both Email and Password!");
+      Alert.alert(
+        "Missing Input",
+        "Please make sure you Provided both Email and Password!"
+      );
+    } else if (errorPresent !== "") {
+      Alert.alert("ERROR", `${errorPresent}`);
     }
   };
-  // console.log("auth data", auth);
   return (
     <View style={tw`flex-1 bg-slate-800`}>
       <SafeAreaView style={tw`flex `}>
