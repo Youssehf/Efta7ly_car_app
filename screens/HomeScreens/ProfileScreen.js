@@ -16,11 +16,11 @@ export default function ProfileScreen() {
     await signOut(auth);
   };
   return (
-    <View style={tw`flex-1 flex-row justify-center items-center bg-slate-500`}>
-      <Text style={tw`text-lg text-red-300`}>Settings! {} </Text>
+    <View style={tw`flex-1 flex justify-center items-center  bg-slate-500`}>
+      <Text style={tw`text-lg font-bold text-red-300 py-5`}>Settings! {} </Text>
       <TouchableOpacity
         onPress={handleLogout}
-        style={tw`p-1 bg-red-400 rounded-lg`}
+        style={tw`p-1 bg-red-400 rounded-lg px-5 py-2`}
       >
         <Text style={tw`text-white text-lg font-bold`}>Logout</Text>
       </TouchableOpacity>

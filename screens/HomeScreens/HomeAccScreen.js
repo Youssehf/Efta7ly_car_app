@@ -54,14 +54,14 @@ export default function HomeAccScreen() {
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
             <Text style={tw`text-2xl py-2`}>Settings</Text>
-            <MaterialIcons name="settings" size={128} color="black" />
+            <MaterialIcons name="settings" size={80} color="black" />
           </View>
 
           <View
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
-            <Text style={tw`text-2xl py-2`}>Vehicle Status</Text>
-            <FontAwesome5 name="car" size={128} color="black" />
+            <Text style={tw`text-2xl py-2`}>Car Status</Text>
+            <FontAwesome5 name="car" size={75} color="black" />
           </View>
         </View>
         <View style={tw`flex flex-row flex-wrap items-center gap-3 py-4 `}>
@@ -69,14 +69,14 @@ export default function HomeAccScreen() {
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
             <Text style={tw`text-2xl py-2`}>Call Support</Text>
-            <MaterialIcons name="support-agent" size={128} color="black" />
+            <MaterialIcons name="support-agent" size={80} color="black" />
           </View>
 
           <View
             style={tw`flex flex-3 justify-center items-center bg-blue-200 rounded-xl p-5`}
           >
             <Text style={tw`text-2xl py-2`}>Bluetooth</Text>
-            <FontAwesome5 name="bluetooth" size={128} color="black" />
+            <FontAwesome5 name="bluetooth" size={75} color="black" />
           </View>
         </View>
       </View>

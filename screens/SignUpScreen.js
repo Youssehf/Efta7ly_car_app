@@ -7,7 +7,7 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ArrowLeftIcon } from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
@@ -22,12 +22,19 @@ export default function SignUpScreen() {
   const [password, setPassword] = useState("");
   const [errorPresent, setErrorPresent] = useState("");
 
+  useEffect(() => {
+    if (errorPresent !== "") {
+      // Alert.alert("ERROR", `${errorPresent}`);
+      Alert.alert("ERROR", `${errorPresent.split("_")[0]}`);
+    }
+  }, [errorPresent]);
   const handleSubmit = async () => {
     if (email && password) {
       try {
         await createUserWithEmailAndPassword(auth, email, password);
       } catch (err) {
-        setErrorPresent(err.message);
+        // setErrorPresent(err.message);
+        setErrorPresent(`${err.message}_${Date.now()}`);
         console.log("Error from state-->", err.message);
         // console.log("got error: ", err.message);
         // let pew = err.message;
@@ -40,9 +47,10 @@ export default function SignUpScreen() {
         "Missing Input",
         "Please make sure you Provided both Email and Password!"
       );
-    } else if (errorPresent !== "") {
-      Alert.alert("ERROR", `${errorPresent}`);
     }
+    //  else if (errorPresent !== "") {
+    //   Alert.alert("ERROR", `${errorPresent}`);
+    // }
   };
   return (
     <View style={tw`flex-1 bg-slate-800 pt-3`}>

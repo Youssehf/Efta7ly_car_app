@@ -46,18 +46,18 @@ export default function EditProfile() {
             <ArrowLeftIcon size="20" color="white" />
           </TouchableOpacity>
         </View>
-        <View style={tw`flex-row justify-around gap-3`}>
+        <View style={tw`flex-row justify-between`}>
           <View style={tw`flex justify-center`}>
-            <View style={tw`flex-row items-baseline p-4`}>
-              <Text style={tw`text-xl text-sky-700`}>Full Name: </Text>
-              <Text style={tw`text-2xl font-bold`}>Youssef Sayed</Text>
+            <View style={tw`flex-row items-baseline py-4 pl-2`}>
+              <Text style={tw` text-sky-700`}>Full Name: </Text>
+              <Text style={tw` font-bold`}>Youssef Sayed</Text>
             </View>
-            <View style={tw`flex-row items-baseline p-4`}>
-              <Text style={tw`text-xl text-sky-700`}>Full Address: </Text>
-              <Text style={tw`text-2xl font-bold`}>16 Youssef Bek st. El-Bassatin Cairo, Egypt</Text>
+            <View style={tw`flex-row items-baseline pl-2`}>
+              <Text style={tw`text-sky-700`}>Full Address: </Text>
+              <Text style={tw`font-bold`}>16 Youssef Bek st. El-Bassatin Cairo, Egypt</Text>
             </View>
           </View>
-          <Image source={blankProfile} style={tw`w-32 h-32 rounded-full`} />
+          <Image source={blankProfile} style={tw`w-16 h-16 rounded-full`} />
         </View>
       </SafeAreaView>
       {/* //car name color model engine */}
