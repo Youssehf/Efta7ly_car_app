@@ -1,3 +1,11 @@
+import React, { useState, useEffect, useContext } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { useNavigation } from "@react-navigation/native";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../config/firebase";
+import { AuthContext } from "../context/AuthContext";
+import tw from "twrnc";
 import {
   View,
   Text,
@@ -7,13 +15,6 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
-import React, { useState, useEffect } from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
-import { useNavigation } from "@react-navigation/native";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";
-import tw from "twrnc";
 
 export default function SignUpScreen() {
   const navigation = useNavigation();
@@ -21,37 +22,46 @@ export default function SignUpScreen() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errorPresent, setErrorPresent] = useState("");
+  const { setUser } = useContext(AuthContext);
 
   useEffect(() => {
     if (errorPresent !== "") {
-      // Alert.alert("ERROR", `${errorPresent}`);
       Alert.alert("ERROR", `${errorPresent.split("_")[0]}`);
     }
   }, [errorPresent]);
+
   const handleSubmit = async () => {
-    if (email && password) {
+    if (email && password && userName) {
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
+        // Create the user
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+
+        // Update the user's display name
+        await updateProfile(user, { displayName: userName });
+
+        // Now you can access the username
+        console.log("User signed up with username:", user.displayName);
+        // Update the user in the AuthContext
+        setUser(user); // Set the user in the context
+
+        // ... rest of your code ...
       } catch (err) {
-        // setErrorPresent(err.message);
         setErrorPresent(`${err.message}_${Date.now()}`);
         console.log("Error from state-->", err.message);
-        // console.log("got error: ", err.message);
-        // let pew = err.message;
       }
-    }
-  };
-  const handleSignUpInputs = () => {
-    if (email === "" || password === "") {
+    } else {
       Alert.alert(
         "Missing Input",
-        "Please make sure you Provided both Email and Password!"
+        "Please make sure you provided Email, Password, and Username!"
       );
     }
-    //  else if (errorPresent !== "") {
-    //   Alert.alert("ERROR", `${errorPresent}`);
-    // }
   };
+
   return (
     <View style={tw`flex-1 bg-slate-800 pt-3`}>
       <SafeAreaView style={tw`flex`}>
@@ -81,16 +91,14 @@ export default function SignUpScreen() {
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl shadow-lg mb-3`}
               value={userName}
-              onChangeText={(value) => {
-                setUserName(value);
-              }}
+              onChangeText={setUserName}
               placeholder="Enter Name"
             />
             <Text style={tw`text-black font-bold ml-3`}>Email Address</Text>
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl shadow-lg mb-3`}
               value={email}
-              onChangeText={(value) => setEmail(value)}
+              onChangeText={setEmail}
               placeholder="Enter Email"
             />
             <Text style={tw`text-black font-bold ml-3`}>Password</Text>
@@ -98,14 +106,14 @@ export default function SignUpScreen() {
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl shadow-lg mb-7`}
               secureTextEntry
               value={password}
-              onChangeText={(value) => setPassword(value)}
+              onChangeText={setPassword}
               placeholder="Enter Password"
             />
             <TouchableOpacity
               style={tw`py-3 bg-sky-700 rounded-full shadow-md`}
               onPress={() => {
                 handleSubmit();
-                handleSignUpInputs();
+                // handleSignUpInputs();
               }}
             >
               <Text style={tw`text-xl font-bold text-center text-white`}>
@@ -142,7 +150,6 @@ export default function SignUpScreen() {
             </Text>
             <TouchableOpacity onPress={() => navigation.navigate("Login")}>
               <Text style={tw`font-semibold text-sky-400 underline ml-2`}>
-                {" "}
                 Login
               </Text>
             </TouchableOpacity>
