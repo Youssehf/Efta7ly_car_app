@@ -63,7 +63,7 @@ export default function EditProfile() {
       {/* //car name color model engine */}
       <View style={tw`flex-1 px-8 pt-8`}>
         <ScrollView style={tw``}>
-          <View style={tw`form gap-4`}>
+          <View style={tw`gap-4`}>
             <View style={tw`flex-row items-baseline p-4`}>
               <Text style={tw`text-2xl font-bold text-sky-700`}>Your Car, </Text>
               <Text style={tw`text-xl`}>Enter All Details.</Text>

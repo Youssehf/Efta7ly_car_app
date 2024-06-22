@@ -65,7 +65,7 @@ export default function LoginScreen() {
               Log In To Your Account
             </Text>
           </View>
-          <View style={tw`form gap-3`}>
+          <View style={tw`gap-3`}>
             <Text style={tw`text-black font-bold ml-3`}>Email Address</Text>
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl shadow-lg mb-3`}
@@ -91,6 +91,7 @@ export default function LoginScreen() {
               onPress={() => {
                 handleSubmit();
                 handleLoginInputs();
+                console.log('hello from login clicked');
               }}
               style={tw`py-3 bg-sky-700 rounded-full shadow-md`}
             >

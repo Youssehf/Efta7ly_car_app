@@ -86,7 +86,7 @@ export default function SignUpScreen() {
           <View style={tw`flex items-center`}>
             <Text style={tw`text-2xl font-bold mb-4`}>Create Account</Text>
           </View>
-          <View style={tw`form gap-4`}>
+          <View style={tw`gap-4`}>
             <Text style={tw`text-black font-bold ml-3`}>Full Name</Text>
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl shadow-lg mb-3`}
@@ -113,6 +113,7 @@ export default function SignUpScreen() {
               style={tw`py-3 bg-sky-700 rounded-full shadow-md`}
               onPress={() => {
                 handleSubmit();
+                console.log('hello from signup');
                 // handleSignUpInputs();
               }}
             >

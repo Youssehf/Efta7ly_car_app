@@ -107,7 +107,7 @@ export default function EditProfile() {
               <Text style={tw`font-bold text-white`}>Update</Text>
             </TouchableOpacity>
           </View>
-          <View style={tw`form gap-4`}>
+          <View style={tw`gap-4`}>
             <Text style={tw`text-black font-bold ml-3`}>First Name</Text>
             <TextInput
               style={tw`p-4 bg-gray-100 text-gray-700 rounded-2xl shadow-sm mb-3`}
