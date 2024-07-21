@@ -5,7 +5,7 @@ This project is a mobile application developed using React Native and JavaScript
 ## Table of Contents
 - [Introduction](#introduction)
 - [Technologies Used](#technologies-used)
-- [Development Environment Setup](###React-Native-Environment)
+- [Development Environment Setup](#React-Native-Environment)
 - [Application Structure](#application-structure)
 - [Design and Workflow](#design-and-workflow)
 - [Installation](#installation)
@@ -20,9 +20,10 @@ The initial phase of this project involved extensive planning and research to bu
 - Firebase: Selected for its real-time database features, and ease of integration.
 - Bluetooth Technology: Implemented for establishing a stable and secure connection with the car's systems.
 
-### React Native Environment
-#### React Native Installation:
-The React Native environment was set up by installing the necessary dependencies and libraries using Node Package Manager (NPM).
+# React Native Environment
+## React Native Installation:
+- I assume you have already set up your React Native environment. If not, you can follow the [official documentation](https://reactnative.dev/docs/environment-setup){:target="_blank"}.
+- In my case The React Native environment was set up by installing the necessary dependencies and libraries using Node Package Manager (NPM).
 
 
 ## Application Structure
